@@ -1,0 +1,71 @@
+@import './vars.scss';
+
+.container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 98%;
+    padding: 10px 1%;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background: rgba(155,155,155,.7);  
+}
+
+.text {
+    position: fixed;
+    bottom: 75px;
+    left: 20px;
+    text-align: right;
+    color: rgba(255,255,255, 0.7);
+    font-weight: 500;
+    font-size: 12px;
+    font-family: $body; 
+}
+
+.link {
+    margin: 0 2%;
+    opacity: .7;
+    transition: opacity .5s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        opacity: .9;
+        transition: opacity .5s ease-in-out;
+    }
+
+    svg {
+        width: 100%;
+    }
+
+    img {
+        width: 100%;
+    }
+}
+
+.dsee {
+    width: 15%;
+}
+
+.neustart {
+    width: 5%;
+}
+
+.stiftung {
+    width: 15%;
+}
+
+.spk {
+    width: 9%;
+}
+
+.berlin {
+    width: 13%;
+}
+
+.zwitscher {
+    width: 10%;
+}
+

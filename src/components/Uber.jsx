@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 
 import { motion } from 'framer-motion'
 import { uberTransitions } from '../animations/pageTransitions'
@@ -7,7 +8,25 @@ import { uberTransitions } from '../animations/pageTransitions'
 import * as styles from '../styles/uber.module.scss' 
 
 const Uber = ({ location }) => {
-    console.log(location)
+    const data = useStaticQuery(graphql`
+    query UberQuery {
+        contentfulUber {
+          notesDeutsch {
+            raw
+          }
+          uberDeutsch {
+            raw
+          }
+          uberEnglish {
+            raw
+          }
+          notesEnglish {
+            raw
+          }
+        }
+      }
+    `)
+    console.log(data)
     return (
         <motion.section
             key={location.pathname}

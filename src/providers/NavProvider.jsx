@@ -4,7 +4,9 @@ export const NavContext = createContext()
 
 const NavProvider = ({ children }) => {
     const [nav, setNav] = useState({
-        navOpen: false
+        navOpen: false,
+        logoCenter: true,
+        
     })
 
     return (

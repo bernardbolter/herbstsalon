@@ -32,7 +32,7 @@ module.exports = {
     options: {
       spaceId: 'mlx3quf0lk21',
       accessToken: 'N6pWOjlsk4NMLyTTRsyqHRoXNltg7xILIZxJ4J5yAtM',
-      environment: "development",
+      environment: "master",
     },
   },
   ]
