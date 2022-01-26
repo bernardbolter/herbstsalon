@@ -1,17 +1,20 @@
 import React from 'react'
 import { Link } from 'gatsby'
+
 import { motion } from 'framer-motion'
+import { uberTransitions } from '../animations/pageTransitions'
+
 import * as styles from '../styles/uber.module.scss' 
 
-const Uber = () => {
+const Uber = ({ location }) => {
+    console.log(location)
     return (
-        <motion.section 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{
-                duration: .5
-            }}
+        <motion.section
+            key={location.pathname}
+            variants={uberTransitions}
+            initial="initial"
+            animate="animate"
+            exit="exit"
             className={styles.container} 
         >
             <p>Uber</p>

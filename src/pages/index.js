@@ -1,6 +1,9 @@
 import React, { useContext } from 'react'
 import { Link } from 'gatsby'
+
 import { motion } from 'framer-motion'
+import { indexTransitions } from '../animations/pageTransitions'
+
 import { ArtistContext } from '../providers/ArtistProvider'
 import { MapContext } from '../providers/MapProvider'
 import { NavContext } from '../providers/NavProvider'
@@ -8,7 +11,8 @@ import { NavContext } from '../providers/NavProvider'
 import * as styles from '../styles/index.module.scss' 
 
 // markup
-const IndexPage = () => {
+const IndexPage = ({ location }) => {
+  console.log(location)
   const [artist, setArtist] = useContext(ArtistContext)
   const [nav, setNav] = useContext(NavContext)
   const [map, setMap] = useContext(MapContext)
@@ -17,13 +21,12 @@ const IndexPage = () => {
   console.log(map)
   console.log(nav)
   return (
-    <motion.main 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{
-        duration: .5
-      }}
+    <motion.main
+      key={location.pathname}
+      variants={indexTransitions}
+      initial="initial"
+      animate="animate"
+      exit="exit"
       className={styles.container}
     >
       <p>INdex</p>
