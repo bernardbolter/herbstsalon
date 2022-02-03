@@ -1,0 +1,10 @@
+@import './vars.scss';
+
+.container {
+    position: fixed;
+    z-index: 205;
+    stroke: $komm;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    cursor: pointer;
+}

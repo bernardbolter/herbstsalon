@@ -49,6 +49,8 @@ const IndexPage = ({ location }) => {
   const [nav, setNav] = useContext(NavContext)
   const [map, setMap] = useContext(MapContext)
 
+  // console.log(nav)
+
   return (
     <motion.main
       key={location.pathname}
@@ -64,6 +66,7 @@ const IndexPage = ({ location }) => {
           : <GatsbyImage image={mobileImage} alt="mobile background" style={{ position: 'unset' }} />
         }   
       </div>
+      <Nav />
       <div className={styles.logo}>
         <Logo />
       </div>
