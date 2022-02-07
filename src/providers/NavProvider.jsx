@@ -14,10 +14,10 @@ const NavProvider = ({ children }) => {
         artistOpen: false,
         eventsOpen: false,
         colors: {
-            uber: null,
-            kunst: null,
-            konzept: null,
-            karte: null
+            uber: "#4255B3",
+            kunst: "#B57535",
+            konzept: "#B02853",
+            karte: "#74997F"
         }
     })
 

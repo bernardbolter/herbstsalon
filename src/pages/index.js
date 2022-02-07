@@ -46,6 +46,7 @@ const IndexPage = ({ location }) => {
   const size = useWindowSize()
 
   const [artist, setArtist] = useContext(ArtistContext)
+  console.log(artist)
   const [nav, setNav] = useContext(NavContext)
   const [map, setMap] = useContext(MapContext)
 
@@ -67,9 +68,7 @@ const IndexPage = ({ location }) => {
         }   
       </div>
       <Nav />
-      <div className={styles.logo}>
-        <Logo />
-      </div>
+      <Logo />
       <Footer />
     </motion.main>
   )

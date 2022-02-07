@@ -1,15 +1,39 @@
 import React, { useState, useEffect, createContext } from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+import { shuffle } from "../helpers";
 
 export const ArtistContext = createContext()
 
 const ArtistProvider = ({ children }) => {
+    const artistData = useStaticQuery(graphql`
+        query ArtistQuery {
+            allContentfulArtist {
+            edges {
+                node {
+                    name
+                    slug
+                    title
+                    }
+                }
+            }
+        }
+    `)
+
+    console.log(artistData)
+
     const [artists, setArtists] = useState({
-        artists: "bernard"
+        artists: []
     })
 
-    // useEffect(() => {
-    //     setArtist(state => ({ ...state, artists: [{ name: "bernard" }] }))
-    // }, [])
+    useEffect(() => {
+        const rawArtists = []
+        if (artistData.allContentfulArtist.edges.length !== 0) {
+            artistData.allContentfulArtist.edges.map(artist => {
+                rawArtists.push(artist.node)
+            })
+        }
+        setArtists(state => ({ ...state, artists: shuffle(rawArtists) }))
+    }, [artistData])
 
     return (
         <ArtistContext.Provider
