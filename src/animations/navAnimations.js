@@ -20,18 +20,28 @@ export const links = {
 
 export const artistsAnime = {
     artistsOff: {
-        translateX: -200
+        translateX: -220,
+        translateY: 44
     },
     artistsOn: {
-        translateX: 0
+        translateX: 115,
+        translateY: 66,
+        rotate: 3
+    },
+    transition: {
+        duration: 5,
+        ease: "linear"
     }
 }
 
 export const eventsAnime = {
     eventsOff: {
-        translateX: -200
+        translateX: -240,
+        translateY: 140
     },
     eventsOn: {
-        translateX: 0
+        translateX: 125,
+        translateY: 122,
+        rotate: -3
     }
 }

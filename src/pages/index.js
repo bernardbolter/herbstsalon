@@ -68,6 +68,7 @@ const IndexPage = ({ location }) => {
         }   
       </div>
       <Nav />
+      <Uber />
       <Logo />
       <Footer />
     </motion.main>

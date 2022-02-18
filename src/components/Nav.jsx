@@ -53,7 +53,9 @@ const Nav = ({ location }) => {
                         console.log("uber")
                         setNav(state => ({
                             ...state,
-                            uberOpen: !state.uberOpen
+                            uberOpen: !state.uberOpen,
+                            artistOpen: state.artistOpen ? false : null,
+                            eventsOpen: state.eventsOpen ? false : null
                         }))
                     }}    
                 >
@@ -90,7 +92,8 @@ const Nav = ({ location }) => {
                         setNav(state => ({
                             ...state,
                             artistOpen: !state.artistOpen,
-                            eventsOpen: state.eventsOpen ? false : null
+                            eventsOpen: state.eventsOpen ? false : null,
+                            uberOpen: state.uberOpen ? false : null
                         }))
                     }} 
                 >
@@ -128,13 +131,20 @@ const Nav = ({ location }) => {
                     initial="artistsOff"
                     animate={nav.artistOpen ? "artistsOn" : "artistsOff"}
                     variants={artistsAnime}
+                    transition={{
+                        duration: .3,
+                        ease: "linear"
+                    }}
                 >
                     {artists.artists.map(artist => (
                         <Link
                             key={artist.slug}
                             to={`/${artist.slug}`}
+                            style={{
+                                backgroundColor: nav.colors.kunst
+                            }}
                         >
-                            <p>{artist.name}</p>
+                            {artist.name}   
                         </Link>
                     ))}
                 </motion.div>
@@ -148,7 +158,8 @@ const Nav = ({ location }) => {
                         setNav(state => ({
                             ...state,
                             eventsOpen: !state.eventsOpen,
-                            artistOpen: state.artistOpen ? false : null
+                            artistOpen: state.artistOpen ? false : null,
+                            uberOpen: state.uberOpen ? false : null
                         }))
                     }} 
                 >
@@ -186,13 +197,20 @@ const Nav = ({ location }) => {
                     initial="eventsOn"
                     animate={nav.eventsOpen ? "eventsOn" : "eventsOff"}
                     variants={eventsAnime}
+                    transition={{
+                        duration: .3,
+                        ease: "linear"
+                    }}
                 >
                     {artists.artists.map(artist => (
                         <Link
                             key={artist.slug}
                             to={`/${artist.slug}`}
+                            style={{
+                                backgroundColor: nav.colors.konzept
+                            }}
                         >
-                            <p>{artist.title}</p>
+                            {artist.title}
                         </Link>
                     ))}
                 </motion.div>

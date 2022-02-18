@@ -15,15 +15,15 @@ export const indexTransitions = {
 
 export const uberTransitions = {
     initial: {
-        x: "-100%"
+        x: "100%"
     },
     animate: {
         x: "0%"
     },
     exit: {
-        x: "-100%"
+        x: "100%"
     },
     transition: {
-        duration: .5
+        duration: 5
     }
 }
