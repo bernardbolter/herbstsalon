@@ -1,4 +1,6 @@
-import React from 'react'
+import React,  { useContext } from 'react'
+
+import { NavContext } from "../providers/NavProvider";
 
 import Dsee from '../svg/Dsee'
 import NeuStart from '../svg/NeuStart'
@@ -13,9 +15,14 @@ import * as styles from '../styles/footer.module.scss'
 // z-index is 300
 
 const Footer = () => {
+    const [nav] = useContext(NavContext)
     return (
         <footer className={styles.container}>
-            <p className={styles.text}>gefördert durch:</p>
+            <div className={styles.funding}>
+                <div className={styles.fundBack} />
+                <p>gefördert</p>
+                <p>durch:</p>
+            </div>
             <a 
                 className={`${styles.link} ${styles.neustart}`}
                 href="https://neustartkultur.de/"

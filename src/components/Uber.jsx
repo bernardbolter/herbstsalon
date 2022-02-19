@@ -1,11 +1,10 @@
 import React, { useContext, useMemo } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { NavContext } from "../providers/NavProvider"
 
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
-// import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS, MARKS } from '@contentful/rich-text-types'
 
 import { useWindowSize } from "../hooks/useWindowSize"
@@ -55,23 +54,23 @@ const Uber = () => {
       }
     }
 
-    // console.log(data.contentfulUber)
-
     return (
         <motion.section
             initial={{
-              translateX: containerWidth
+              translateX: 0,
+              skewX: -1
             }}
             animate={nav.uberOpen 
-              ? { translateX: 0, skewX: -1}
-              : { translateX: containerWidth}
+              ? { translateX: -Math.abs(containerWidth), skewX: -1}
+              : { translateX: 0, skewX: -1}
             }
             transition={{
               duration: .5
             }}
             className={styles.container}
             style={{
-              width: containerWidth
+              width: containerWidth,
+              right: -Math.abs(containerWidth)
             }}
         >
             <div 
@@ -81,8 +80,80 @@ const Uber = () => {
               className={styles.back}  
             />
             <div className={styles.textWrap}>
-              <div className={styles.text}>{renderRichText(data.contentfulUber.uberDeutsch, options)}</div>
-              <div className={styles.notes}>{renderRichText(data.contentfulUber.notesDeutsch, options)}</div>
+              <div className={styles.headerWrap}>
+                <p className={styles.header}>HERBSTSALON! <span className={styles.red}>Komm!</span> Ins Offene</p>
+                <div 
+                  className={styles.language}
+                  onClick={() => {
+                    console.log("set lang")
+                    setNav(state => ({ ...state, deutsch: !state.deutsch }))
+                  }}   
+                >
+                  <motion.svg   
+                    viewBox="0 0 25 25"
+                    className={styles.langCircle}
+                    initial={{
+                      translateX: 0
+                    }}
+                    animate={{
+                      translateX: nav.deutsch ? 0 : 34
+                    }}
+                    transition={{
+                      duration: .3,
+                      ease: "linear"
+                    }}
+                  >
+                    <circle cx="12" cy="12" r="12"/>
+                  </motion.svg>
+                  <p
+                    style={{
+                      opacity: nav.deutsch ? 1 : .6
+                    }}
+                  >DE</p>
+                  <p
+                    style={{
+                      opacity: nav.deutsch ? .6 : 1
+                    }}
+                  >EN</p>
+                </div>
+              </div>
+
+              <AnimatePresence exitBeforeEnter>
+                { nav.deutsch
+                  ? (
+                    <motion.div
+                      key="deutsch"
+                      initial={{opacity: 0}}
+                      animate={{ opacity: 1}}
+                      exit={{ opacity: 0}}
+                      transition={{ duration: .3}}
+                    >
+                      <div className={styles.text}>
+                        {renderRichText(data.contentfulUber.uberDeutsch, options)}
+                      </div>
+                      <div className={styles.notes}>
+                        {renderRichText(data.contentfulUber.notesDeutsch, options)}
+                      </div>
+                    </motion.div>
+                  )
+                  : (
+                    <motion.div 
+                      key="english"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: .3 }}
+                    >
+                       <div className={styles.text}>
+                        {renderRichText(data.contentfulUber.uberEnglish, options)}
+                      </div>
+                      <div className={styles.notes}>
+                        {renderRichText(data.contentfulUber.notesEnglish, options)}
+                      </div>
+                    </motion.div>
+                  )
+                }
+              </AnimatePresence>
             </div>
         </motion.section>
     )

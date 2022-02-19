@@ -14,6 +14,7 @@ const NavProvider = ({ children }) => {
         artistOpen: false,
         eventsOpen: false,
         language: 'de',
+        deutsch: true,
         colors: {
             uber: "#4255B3",
             kunst: "#B57535",

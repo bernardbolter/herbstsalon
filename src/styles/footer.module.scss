@@ -15,6 +15,39 @@
     background: rgba(155,155,155,.7);  
 }
 
+.funding {
+    position: fixed;
+    bottom: 120px;
+    left: 0;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+
+    p {
+        position: relative;
+        z-index: 704;
+        padding: 0 15px 0 0;
+        margin: 0;
+        font-family: $body;
+        color: rgba(255,255,255,.6);
+        font-size: 14px;
+        text-align: right;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+    }
+}
+
+.fundBack {
+    width: 100px;
+    height: 50px;
+    transform: skew(2deg, 2deg);
+    position: absolute;
+    background: $komm;
+    opacity: .6;
+}
+
 .text {
     position: fixed;
     bottom: 75px;
