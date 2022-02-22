@@ -8,14 +8,18 @@ const ArtistProvider = ({ children }) => {
     const artistData = useStaticQuery(graphql`
         query ArtistQuery {
             allContentfulArtist {
-            edges {
-                node {
+                edges {
+                  node {
+                    location {
+                      lat
+                      lon
+                    }
                     name
                     slug
                     title
-                    }
+                  }
                 }
-            }
+              }
         }
     `)
 

@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { Link } from 'gatsby'
+import React, { useContext, useEffect } from 'react'
+import { Link, navigate } from 'gatsby'
 
 import { NavContext } from '../providers/NavProvider'
 import { ArtistContext } from "../providers/ArtistProvider";
@@ -18,11 +18,15 @@ import {
 import * as styles from '../styles/nav.module.scss'
 
 const Nav = ({ location }) => { 
+    console.log(location)
     const [nav, setNav] = useContext(NavContext)
     const [artists] = useContext(ArtistContext)
     const variant = nav.navOpen ? "arrow" : "hamburger"
-    console.log(nav.navOpen)
     const size = useWindowSize()
+
+    useEffect(() => {
+
+    }, [size.window, location])
 
     return (
         <nav className={styles.container}>
@@ -57,6 +61,9 @@ const Nav = ({ location }) => {
                             artistOpen: state.artistOpen ? false : null,
                             eventsOpen: state.eventsOpen ? false : null
                         }))
+                        if (location.pathname === "/karte/") {
+                            navigate("/")
+                        }
                     }}    
                 >
                     <motion.div 

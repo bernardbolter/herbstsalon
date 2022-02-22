@@ -15,6 +15,8 @@ const NavProvider = ({ children }) => {
         eventsOpen: false,
         language: 'de',
         deutsch: true,
+        uberContainerWidth: null,
+        uberContainerWidthNeg: null,
         colors: {
             uber: "#4255B3",
             kunst: "#B57535",
@@ -34,6 +36,23 @@ const NavProvider = ({ children }) => {
             setNav(state => ({ ...state, navOpen: false }))
         } else {
             setNav(state => ({...state, navOpen: true}))
+        }
+    }, [size.width])
+
+    useEffect(() => {
+        var containerWidth
+        console.log("effect nav: ", size)
+        if (size.width > 768) {
+            containerWidth = size.width * .8
+        } else {
+            containerWidth = size.containerWidth
+        }
+        if (containerWidth !== undefined) {
+            setNav(state => ({
+                ...state,
+                uberContainerWidth: containerWidth,
+                uberContainerWidthNeg: -containerWidth
+            }))
         }
     }, [size.width])
 

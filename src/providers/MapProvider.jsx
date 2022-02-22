@@ -4,7 +4,11 @@ export const MapContext = createContext()
 
 const MapProvider = ({ children }) => {
     const [map, setMap] = useState({
-        map: "got a map"
+        viewArtists: false,
+        viewEvents: false,
+        lng: 13.359980,
+        lat: 52.494414,
+        zoom: 16,
     })
 
     return (

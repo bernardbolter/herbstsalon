@@ -44,6 +44,7 @@ const Uber = () => {
     console.log("con width: ", containerWidth)
 
     const [nav, setNav] = useContext(NavContext)
+    console.log(nav)
 
     const options = {
       renderMark: {
@@ -61,16 +62,16 @@ const Uber = () => {
               skewX: -1
             }}
             animate={nav.uberOpen 
-              ? { translateX: -Math.abs(containerWidth), skewX: -1}
-              : { translateX: 0, skewX: -1}
+              ? { translateX: nav.uberContainerWidthNeg, skewX: -1}
+              : { translateX: 6, skewX: -1}
             }
             transition={{
               duration: .5
             }}
             className={styles.container}
             style={{
-              width: containerWidth,
-              right: -Math.abs(containerWidth)
+              width: nav.uberContainerWidth,
+              right: nav.uberContainerWidthNeg
             }}
         >
             <div 

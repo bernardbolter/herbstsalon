@@ -48,6 +48,7 @@ const IndexPage = ({ location }) => {
   const [artist, setArtist] = useContext(ArtistContext)
   console.log(artist)
   const [nav, setNav] = useContext(NavContext)
+  console.log(nav)
   const [map, setMap] = useContext(MapContext)
 
   // console.log(nav)
@@ -67,7 +68,7 @@ const IndexPage = ({ location }) => {
           : <GatsbyImage image={mobileImage} alt="mobile background" style={{ position: 'unset' }} />
         }   
       </div>
-      <Nav />
+      <Nav location={location}/>
       <Uber />
       <Logo />
       <Footer />
