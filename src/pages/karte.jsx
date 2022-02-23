@@ -1,23 +1,22 @@
 import React, { useState, useEffect, useMemo, useContext } from 'react'
 import { motion, AnimatePresence } from "framer-motion";
 
-import ReactMapGL, {NavigationControl, Source, Layer, FlyToInterpolator, Marker} from 'react-map-gl';
-import "mapbox-gl/dist/mapbox-gl.css";
-import mapboxgl from 'mapbox-gl';
-
-// eslint-disable-next-line import/no-webpack-loader-syntax
-mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
-
+import ReactMapGL, {NavigationControl, Source, Layer, FlyToInterpolator, Marker} from 'react-map-gl'
+import "mapbox-gl/dist/mapbox-gl.css"
+import mapboxgl from 'mapbox-gl'
 
 import Nav from '../components/Nav'
 import KarteNav from '../components/KarteNav'
 import MapPoint from '../components/MapPoint'
 
-import { NavContext } from "../providers/NavProvider";
-import { MapContext } from "../providers/MapProvider";
-import { ArtistContext } from "../providers/ArtistProvider";
+import { NavContext } from "../providers/NavProvider"
+import { MapContext } from "../providers/MapProvider"
+import { ArtistContext } from "../providers/ArtistProvider"
 
 import * as styles from '../styles/karte.module.scss'
+
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 
 const Karte = ({ location }) => {
     const [nav, setNav] = useContext(NavContext)
