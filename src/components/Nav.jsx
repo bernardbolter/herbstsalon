@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Link, navigate } from 'gatsby'
 
 import { NavContext } from '../providers/NavProvider'
@@ -17,20 +17,30 @@ import {
 
 import * as styles from '../styles/nav.module.scss'
 
-const Nav = ({ location }) => { 
-    console.log(location)
+const Nav = ({ location }) => {
     const [nav, setNav] = useContext(NavContext)
     const [artists] = useContext(ArtistContext)
     const variant = nav.navOpen ? "arrow" : "hamburger"
     const size = useWindowSize()
+    const [hamburger, setHamburger] = useState(false)
 
     useEffect(() => {
-
+        if (size.window < 769 || location.pathname === '/karte/') {
+            setHamburger(true)
+        } else {
+            setHamburger(false)
+        }
     }, [size.window, location])
+
+    useEffect(() => {
+        if (location.pathname === '/karte/') {
+            setNav(state => ({...state, navOpen: false }))
+        }
+    }, [])
 
     return (
         <nav className={styles.container}>
-            {size.width < 768 && (
+            {hamburger && (
                 <>
                     <motion.div 
                         className={styles.hamburger}
@@ -45,7 +55,7 @@ const Nav = ({ location }) => {
             <motion.div 
                 className={styles.links}
                 style={{
-                    marginTop: size.width < 768 ? 60 : 0
+                    marginTop: hamburger ? 60 : 0
                 }}
                 initial="hamburger"
                 animate={variant}

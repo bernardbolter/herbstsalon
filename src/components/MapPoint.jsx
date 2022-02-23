@@ -1,11 +1,11 @@
 import React from 'react'
 
-import * as styles from '../styles/map-point.scss'
+import * as styles from '../styles/map-point.module.scss'
 
 const MapPoint = ({ point }) => {
     return (
         <div className={styles.container}>
-            point
+            <p>{point.name}</p>
         </div>
     )
 }

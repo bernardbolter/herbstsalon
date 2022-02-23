@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useContext } from 'react'
+import React, { useState, useEffect, useMemo, useContext } from 'react'
 import { motion, AnimatePresence } from "framer-motion";
 
 import ReactMapGL, {NavigationControl, Source, Layer, FlyToInterpolator, Marker} from 'react-map-gl';
@@ -6,6 +6,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 
 import Nav from '../components/Nav'
 import KarteNav from '../components/KarteNav'
+import MapPoint from '../components/MapPoint'
 
 import { NavContext } from "../providers/NavProvider";
 import { MapContext } from "../providers/MapProvider";
@@ -14,7 +15,6 @@ import { ArtistContext } from "../providers/ArtistProvider";
 import * as styles from '../styles/karte.module.scss'
 
 const Karte = ({ location }) => {
-    console.log(location)
     const [nav, setNav] = useContext(NavContext)
     const [artists, setArtists] = useContext(ArtistContext)
     const [map, setMap] = useContext(MapContext)
@@ -29,13 +29,14 @@ const Karte = ({ location }) => {
 
     const markers = useMemo(() => artists.artists.map(point => {
         if (point.location !== null) {
+
             return (
                 <Marker
                     key={point.slug}
                     longitude={point.location.lon}
                     latitude={point.location.lat}
                 >
-                    <p>{point.name}</p>
+                    <MapPoint point={point} />
                 </Marker>
             )
         }
@@ -52,7 +53,7 @@ const Karte = ({ location }) => {
             <KarteNav />
             <ReactMapGL
                 {...viewport}
-                // style={{ position: 'fixed' }}
+                style={{ position: 'fixed', zIndex: 202 }}
                 mapStyle="mapbox://styles/mapbox/light-v10"
                 onMove={nextViewport => setViewport(nextViewport)}
                 mapboxAccessToken={`${process.env.GATSBY_MAPBOX}`}
