@@ -1,11 +1,11 @@
 import React, { useContext} from 'react'
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"
 
-import { MapContext } from "../providers/MapProvider";
-import { NavContext } from "../providers/NavProvider";
+import { MapContext } from "../providers/MapProvider"
+import { NavContext } from "../providers/NavProvider"
 
-import EyeOpen from '../svg/eyeOpen'
-import EyeClosed from '../svg/eyeClosed'
+import EyeOpen from "../svg/EyeOpen"
+import EyeClosed from '../svg/EyeClosed'
 
 import * as styles from '../styles/karte-nav.module.scss'
 
