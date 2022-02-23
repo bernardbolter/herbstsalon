@@ -15,7 +15,7 @@ const Kuenstler = () => {
       }
     `)
     return (
-        <section className={StyleSheet.container}>
+        <section className={styles.container}>
             <p>{artistData.contentfulArtists.name}</p>
         </section>
     )

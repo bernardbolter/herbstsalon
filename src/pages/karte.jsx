@@ -3,6 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import ReactMapGL, {NavigationControl, Source, Layer, FlyToInterpolator, Marker} from 'react-map-gl';
 import "mapbox-gl/dist/mapbox-gl.css";
+import mapboxgl from 'mapbox-gl';
+
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
+
 
 import Nav from '../components/Nav'
 import KarteNav from '../components/KarteNav'
