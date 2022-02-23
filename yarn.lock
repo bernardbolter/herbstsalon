@@ -10387,7 +10387,7 @@
   dependencies:
     "object-visit" "^1.0.0"
 
-"mapbox-gl@*":
+"mapbox-gl@*", "mapbox-gl@^2.7.0":
   "integrity" "sha512-7sNoQIpizMjoQkFIcxpWzFCcMd8GJFN0Po00oFZGm1X7xS5XMrzwu+ClfO/ehZqKLa9IS7E3Pj0e2PT+9KeqaA=="
   "resolved" "https://registry.npmjs.org/mapbox-gl/-/mapbox-gl-2.7.0.tgz"
   "version" "2.7.0"
