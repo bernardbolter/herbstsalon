@@ -17,40 +17,58 @@ const KarteNav = () => {
         <motion.nav
             className={styles.container}
         >
-            <div 
-                className={styles.link}
-                onClick={() => {
-                    console.log("clicked events")
-                    setMap(state => ({
-                        ...state, 
-                        viewArtists: !state.viewArtists,
-                        viewEvents: state.viewEvents ? false : null
-                    }))
-                }}    
-            >
-                {map.viewArtists ? <EyeClosed /> : <EyeOpen />}
-                <p>
-                    <span>Künstlerin</span>
-                    <span>& Künstler</span>
-                </p>
+            <div className={styles.header}>
+                <div 
+                    className={styles.headerBack} 
+                    style={{ background: nav.colors.karte, opacity: .85 }}    
+                />
+                <p>Karte Navigation</p>
             </div>
-            <div 
-                className={styles.link}
-                onClick={() => {
-                    console.log("clicked events")
-                    setMap(state => ({
-                        ...state, 
-                        viewArtists: state.viewEvents ? false : null,
-                        viewEvents: !state.viewEvents
-                    }))
-                }}
+            <motion.div 
+                className={styles.artistContainer}
             >
-                {map.viewEvents ? <EyeClosed color={nav.colors.konzept} /> : <EyeOpen color={nav.colors.konzept} />}
-                <p>
-                    <span>Konzept</span>
-                    <span>& Aktionen</span>  
-                </p>
-            </div>
+                <div 
+                    className={styles.artistBackground}   
+                />
+                <div 
+                    className={styles.link}
+                    onClick={() => {
+                        console.log("clicked events")
+                        setMap(state => ({
+                            ...state, 
+                            viewArtists: !state.viewArtists,
+                            viewEvents: state.viewEvents ? false : null
+                        }))
+                    }}    
+                >
+                    {map.viewArtists ? <EyeClosed color={nav.colors.kunst} /> : <EyeOpen color={nav.colors.kunst} />}
+                    <p
+                        style={{ color: nav.colors.kunst }}
+                    >
+                        <span>Künstlerin</span>
+                        <span>& Künstler</span>
+                    </p>
+                </div>
+                <div 
+                    className={styles.link}
+                    onClick={() => {
+                        console.log("clicked events")
+                        setMap(state => ({
+                            ...state, 
+                            viewArtists: state.viewEvents ? false : null,
+                            viewEvents: !state.viewEvents
+                        }))
+                    }}
+                >
+                    {map.viewEvents ? <EyeClosed color={nav.colors.konzept} /> : <EyeOpen color={nav.colors.konzept} />}
+                    <p
+                        style={{ color: nav.colors.konzept }}
+                    >
+                        <span>Konzept</span>
+                        <span>& Aktionen</span>  
+                    </p>
+                </div>
+            </motion.div>
         </motion.nav>
     )
 }
