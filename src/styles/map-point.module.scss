@@ -1,6 +1,30 @@
 @import './vars.scss';
 
-.container {
+.point {
     display: block;
-    color: green;
+    cursor: pointer;
+
+    p {
+        font-size: 15px;
+        font-weight: 800;
+        margin: 0;
+        padding: 0;
+    }
+
+    svg {
+        width: 10px;
+    }
+}
+
+.info {
+    position: absolute;
+    bottom: 21px;
+
+    h2 {
+        color: rgba(255,255,255,.8);
+        padding: 0 10px;
+        font-weight: 800;
+        font-size: 14px;
+        white-space: nowrap;
+    }
 }

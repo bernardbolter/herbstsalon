@@ -1,4 +1,5 @@
 import React, { useContext} from 'react'
+import { navigate } from 'gatsby'
 import { motion } from "framer-motion"
 
 import { MapContext } from "../providers/MapProvider"
@@ -13,6 +14,8 @@ const KarteNav = () => {
     const [map, setMap] = useContext(MapContext)
     const [nav, setNav] = useContext(NavContext)
 
+    console.log("nav map: ", map)
+
     return (
         <motion.nav
             className={styles.container}
@@ -23,7 +26,7 @@ const KarteNav = () => {
                     style={{ background: nav.colors.karte, opacity: .85 }}    
                 />
                 <p>Karte Navigation</p>
-            </div>
+            </div> 
             <motion.div 
                 className={styles.artistContainer}
             >
@@ -37,7 +40,7 @@ const KarteNav = () => {
                         setMap(state => ({
                             ...state, 
                             viewArtists: !state.viewArtists,
-                            viewEvents: state.viewEvents ? false : null
+                            viewEvents: state.viewEvents && false
                         }))
                     }}    
                 >
@@ -55,7 +58,7 @@ const KarteNav = () => {
                         console.log("clicked events")
                         setMap(state => ({
                             ...state, 
-                            viewArtists: state.viewEvents ? false : null,
+                            viewArtists: state.viewEvents && false,
                             viewEvents: !state.viewEvents
                         }))
                     }}
@@ -68,6 +71,28 @@ const KarteNav = () => {
                         <span>& Aktionen</span>  
                     </p>
                 </div>
+            </motion.div>
+            <motion.div
+                className={styles.tourContainer}
+            >
+                {map.tours.map(tour => (
+                    <div 
+                        key={tour.artist}
+                        className={styles.tourLink}
+                        onClick={() => {
+                            setMap(state => ({
+                                ...state,
+                                startTour: true,
+                            }))
+                            navigate(`/${tour.slug}/`)
+                        }}
+                    >
+                        <p>{tour.artist}</p>
+                    </div>
+                ))}
+                <p onClick={() => {
+                    setMap(state => ({ ...state, startTour: !state.startTour }))
+                }}>{map.startTour ? "stop" : "start"} tour</p>
             </motion.div>
         </motion.nav>
     )

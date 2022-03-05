@@ -1,0 +1,37 @@
+{
+    "name" : "Carstens Tour",
+    "slug" : "carstens-tour",
+    "description" : "Marei a bissal wos gehd ollaweil hod a bissal wos gehd ollaweil Weiznglasl, Gaudi fensdaln fias Biakriagal! Und sei Woibbadinga Jodler nimmds Marei, oans, zwoa, gsuffa. Fünferl naa bittschön eam hod, wea nia ausgähd, kummt nia hoam Mamalad. Amoi dei is Maderln ned Marei, Maderln.",
+    "stops" : [
+        {
+            "title" : "Festspiele 2021",
+            "slug" : "festspiele-2021",
+            "text" : "Bavaria ipsum dolor sit amet hinter’m Berg san a no Leit fei, de Sonn obandln nia noch da Giasinga Heiwog und sei hawadere midananda a geh hob! Gaudi heid gfoids ma sagrisch guad griaß God beinand jo leck mi resch Graudwiggal.",
+            "lng" : 13.36132063938433,
+            "lat" : 52.494885332261624,
+            "coords" : [13.36132063938433, 52.494885332261624],
+            "image" : "fest_map.jpg",
+            "zoom" : 18
+        },
+        {
+            "title" : "Werkzeug Macht Musik",
+            "slug" : "werkzeug-macht-musik",
+            "text" : "Wiesn Biazelt imma, resch: Enzian nia need des basd scho kimmt hob i an Suri a liabs Deandl liberalitas Bavariae Zidern? I hob di narrisch gean i waar soweid woaß gscheckate fei weida Musi wolln soi hoid.",
+            "lng" : 13.359748,
+            "lat" : 52.494612,
+            "coords" : [13.359748, 52.494612],
+            "image" : "toolbox_map.jpg",
+            "zoom" : 18
+        },
+        {
+            "title" : "Kaktus und Mimose",
+            "slug" : "kaktus-und-mimose",
+            "text" : "Xaver i sog ja nix, i red ja bloß auf’d Schellnsau hoggd ghupft wia gsprunga de Sonn Buam schaugn. Schoo do ma, guad. Fias a Maß und no a Maß oa mehra eam a so a Schmarn allerweil Weißwiaschd!",
+            "lng" : 13.358493454839369,
+            "lat" : 52.495290933062684,
+            "coords" : [13.358493454839369, 52.495290933062684],
+            "image" : "kaktus_map.jpg",
+            "zoom" : 18
+        }
+    ]
+}
