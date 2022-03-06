@@ -23,8 +23,6 @@ const ArtistProvider = ({ children }) => {
         }
     `)
 
-    console.log(artistData)
-
     const [artists, setArtists] = useState({
         artists: []
     })

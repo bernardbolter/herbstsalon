@@ -1,4 +1,4 @@
-import React, { useMemo, useContext } from 'react'
+import React, { useContext } from 'react'
 import { MapContext } from '../providers/MapProvider'
 import { NavContext } from '../providers/NavProvider'
 
@@ -8,18 +8,10 @@ const MapLine = () => {
     const [map] = useContext(MapContext)
     const [nav] = useContext(NavContext)
 
-    console.log(map.tours[0].lines)
-
-    // const coords = useMemo(() => {
-    //     return 
-    // }, [map.currentTour])
-
-
     const dataOne = {
         type: "Feature",
         geometry: {
           type: "LineString",
-            //   coordinates: map.coords
             coordinates: map.currentTour.lines
         }
     }

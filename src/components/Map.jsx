@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useContext } from 'react'
+import React, { useState, useEffect, useMemo, useRef, useContext } from 'react'
 
 import MapPoint from '../components/MapPoint'
 import MapLine from '../components/MapLine'
@@ -17,6 +17,7 @@ const Map = ({}) => {
     const size = useWindowSize()
     const [map, setMap] = useContext(MapContext)
     const [artists] = useContext(ArtistContext)
+    const mapRef = useRef()
 
     const [viewport, setViewport] = useState({
         width: "100%",
@@ -41,6 +42,26 @@ const Map = ({}) => {
         }
     }))
 
+    useEffect(() => {
+        if (map.startTour) {
+            mapRef.current.flyTo({
+                center: [
+                    map.currentTour.stops[map.currentStop].location.lon,
+                    map.currentTour.stops[map.currentStop].location.lat
+                ],
+                duration: 2000,
+                zoom: map.currentTour.stops[map.currentStop].zoom
+            })
+            // setViewport({
+            //     longitude: map.currentTour.stops[map.currentStop].location.lon,
+            //     latitude: map.currentTour.stops[map.currentStop].location.lat,
+            //     zoom: map.currentTour.stops[map.currentStop].zoom,
+            //     transitionDuration: 2000,
+            //     transitionInterpolator: new FlyToInterpolator()
+            // })
+        }
+    }, [map.currentStop])
+
     return (
         <section style={{
             width: '100%',
@@ -53,6 +74,7 @@ const Map = ({}) => {
             left: 0
         }}>
             <ReactMapGL
+                ref={mapRef}
                 {...viewport}
                 style={{ position: 'fixed', zIndex: 202 }}
                 mapStyle="mapbox://styles/mapbox/light-v10"

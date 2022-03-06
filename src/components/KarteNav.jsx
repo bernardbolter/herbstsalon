@@ -14,7 +14,7 @@ const KarteNav = () => {
     const [map, setMap] = useContext(MapContext)
     const [nav, setNav] = useContext(NavContext)
 
-    console.log("nav map: ", map)
+    // console.log("nav map: ", map)
 
     return (
         <motion.nav
@@ -36,7 +36,6 @@ const KarteNav = () => {
                 <div 
                     className={styles.link}
                     onClick={() => {
-                        console.log("clicked events")
                         setMap(state => ({
                             ...state, 
                             viewArtists: !state.viewArtists,
@@ -55,7 +54,6 @@ const KarteNav = () => {
                 <div 
                     className={styles.link}
                     onClick={() => {
-                        console.log("clicked events")
                         setMap(state => ({
                             ...state, 
                             viewArtists: state.viewEvents && false,
@@ -75,7 +73,7 @@ const KarteNav = () => {
             <motion.div
                 className={styles.tourContainer}
             >
-                {map.tours.map(tour => (
+                {/* {map.tours.map(tour => (
                     <div 
                         key={tour.artist}
                         className={styles.tourLink}
@@ -89,7 +87,7 @@ const KarteNav = () => {
                     >
                         <p>{tour.artist}</p>
                     </div>
-                ))}
+                ))} */}
                 <p onClick={() => {
                     setMap(state => ({ ...state, startTour: !state.startTour }))
                 }}>{map.startTour ? "stop" : "start"} tour</p>

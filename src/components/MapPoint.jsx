@@ -14,7 +14,6 @@ const MapPoint = ({ point }) => {
         return point.name.split(/\s/).reduce((response,word)=> response+=word.slice(0,1),'')
     }, [point.name])
 
-    console.log(point)
     return (
         <>
         <div 
