@@ -5,9 +5,10 @@ import MapLine from '../components/MapLine'
 
 import { MapContext } from '../providers/MapProvider'
 import { ArtistContext } from '../providers/ArtistProvider'
-import { useWindowSize } from "../hooks/useWindowSize";
+import { NavContext } from '../providers/NavProvider'
+import { useWindowSize } from "../hooks/useWindowSize"
 
-import ReactMapGL, {NavigationControl, FlyToInterpolator, Marker} from 'react-map-gl'
+import ReactMapGL, {NavigationControl, Marker} from 'react-map-gl'
 import "mapbox-gl/dist/mapbox-gl.css"
 import mapboxgl from 'mapbox-gl'
 
@@ -17,6 +18,7 @@ const Map = ({}) => {
     const size = useWindowSize()
     const [map, setMap] = useContext(MapContext)
     const [artists] = useContext(ArtistContext)
+    const [nav] = useContext(NavContext)
     const mapRef = useRef()
 
     const [viewport, setViewport] = useState({
@@ -42,6 +44,35 @@ const Map = ({}) => {
         }
     }))
 
+    const tourMark = useMemo(() => {
+        if (map.startTour) {
+            console.log("tour mark", map.currentTour.stops[map.currentStop])
+            return (
+                <Marker
+                    longitude={map.currentTour.stops[map.currentStop].location.lon}
+                    latitude={map.currentTour.stops[map.currentStop].location.lat}
+                >
+                    <div style={{
+                        width: 30,
+                        height: 30,
+                        background: nav.colors.karte,
+                        borderRadius: 15,
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center"
+                    }}>
+                        <p
+                            style={{
+                                color: 'rgba(255,255,255,.8',
+                                fontSize: 20
+                            }}
+                        >{map.currentStop  + 1}</p>
+                    </div>
+                </Marker>
+            )
+        }
+    }, [map.currentStop, map.startTour])
+
     useEffect(() => {
         if (map.startTour) {
             mapRef.current.flyTo({
@@ -52,15 +83,8 @@ const Map = ({}) => {
                 duration: 2000,
                 zoom: map.currentTour.stops[map.currentStop].zoom
             })
-            // setViewport({
-            //     longitude: map.currentTour.stops[map.currentStop].location.lon,
-            //     latitude: map.currentTour.stops[map.currentStop].location.lat,
-            //     zoom: map.currentTour.stops[map.currentStop].zoom,
-            //     transitionDuration: 2000,
-            //     transitionInterpolator: new FlyToInterpolator()
-            // })
         }
-    }, [map.currentStop])
+    }, [map.currentStop, map.startTour])
 
     return (
         <section style={{
@@ -82,6 +106,7 @@ const Map = ({}) => {
                 mapboxAccessToken={`${process.env.GATSBY_MAPBOX}`}
             >
                 {(map.viewArtists || map.viewEvents) && markers}
+                {map.startTour && tourMark}
                 {map.startTour && <MapLine />}
 
                 <NavigationControl 

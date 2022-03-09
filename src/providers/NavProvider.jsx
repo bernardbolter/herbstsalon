@@ -15,6 +15,7 @@ const NavProvider = ({ children }) => {
         eventsOpen: false,
         language: 'de',
         deutsch: true,
+        artistPage: true,
         uberContainerWidth: null,
         uberContainerWidthNeg: null,
         colors: {

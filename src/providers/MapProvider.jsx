@@ -13,7 +13,8 @@ const MapProvider = ({ children }) => {
         openTour: false,
         startTour: false,
         currentTour: {},
-        currentStop: 0
+        currentStop: 0,
+        mapNoClick: false
     })
 
     return (

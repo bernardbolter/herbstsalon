@@ -21,8 +21,8 @@ const Karte = ({ location }) => {
         <AnimatePresence>
             <motion.div className={styles.container}>
                 <Background />
-                <Nav location={location}/>
-                <KarteNav />
+                <Nav location={location} />
+                <KarteNav location={location} />
                 <Map />
             </motion.div>
         </AnimatePresence>

@@ -28,6 +28,9 @@ const IndexPage = ({ location }) => {
   // console.log(nav)
 
   return (
+    <>
+    <Background />
+    <Nav location={location}/>
     <motion.main
       key={location.pathname}
       variants={indexTransitions}
@@ -36,12 +39,11 @@ const IndexPage = ({ location }) => {
       exit="exit"
       className={styles.container}
     >
-      <Background />
-      <Nav location={location}/>
       <Uber />
       <Logo />
       <Footer />
     </motion.main>
+    </>
   )
 }
 

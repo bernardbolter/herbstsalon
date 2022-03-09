@@ -23,7 +23,8 @@ const TourPage = ({ data, location }) => {
             lines: rawLines,
             artist: data.contentfulTour.artist,
             stops: data.contentfulTour.stop,
-            slug: data.contentfulTour.slug
+            slug: data.contentfulTour.slug,
+            description: data.contentfulTour.description.description
         }
         setMap(state => ({ ...state, currentTour: rawTour, openTour: true }))
 
@@ -34,8 +35,8 @@ const TourPage = ({ data, location }) => {
     return (
         <main className={styles.container}>
             <Background />
-            <Nav location={location}/>
-            <KarteNav />
+            <Nav location={location} />
+            <KarteNav location={location} />
             <Map />
             {map.openTour && <Tour />}
         </main>
@@ -48,26 +49,28 @@ export const query = graphql`
             artist
             id
             line {
-                coords {
-                        lat
-                        lon
-                    }
-                    name
-                }
+              coords {
+                lat
+                lon
+              }
+              name
+            }
             slug
             stop {
-                zoom
-                tourSlug
-                title
-                location {
-                    lat
-                    lon
-                }
-                slug
-                image {
-                    gatsbyImageData
-                    description
-                }
+              zoom
+              title
+              location {
+                lat
+                lon
+              }
+              slug
+              image {
+                gatsbyImageData
+                description
+              }
+            }
+            description {
+              description
             }
         }
     }

@@ -156,6 +156,7 @@ const Nav = ({ location }) => {
                     {artists.artists.map(artist => (
                         <Link
                             key={artist.slug}
+                            onClick={() => setNav(state => ({ ...state, artistPage: true, artistOpen: false }))}
                             to={`/${artist.slug}`}
                             style={{
                                 backgroundColor: nav.colors.kunst
@@ -222,6 +223,7 @@ const Nav = ({ location }) => {
                     {artists.artists.map(artist => (
                         <Link
                             key={artist.slug}
+                            onClick={() => setNav(state => ({ ...state, artistPage: false, eventsOpen: false }))}
                             to={`/${artist.slug}`}
                             style={{
                                 backgroundColor: nav.colors.konzept
