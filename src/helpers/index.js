@@ -31,3 +31,7 @@ export const hexToRGB = (hex, alpha) => {
         return "rgb(" + r + ", " + g + ", " + b + ")";
     }
 }
+
+export const randomNumber = (min, max) => { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min)
+  }

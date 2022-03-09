@@ -8,33 +8,36 @@
     top: 0;
     right: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     overflow-y: scroll;
 }
 
 .header {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: flex-end;
+    width: 100%;
+    margin: 5% 0 0;
 }
 
 .title {
-    width: 40%;
-    background: rgba(0,0,0,.5);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    margin:  0 0 0 5%;
 
     h1 {
         font-family: $heading;
-        font-size: 35px;
+        font-size: 40px;
         line-height: 36px;
         color: rgba(255,255,255,.8);
         margin: 0;
         padding: 0;
+        transform: rotate(2deg)
     }
 
     h2 {
@@ -43,6 +46,8 @@
         margin: 0;
         padding: 0;
         font-weight: 800;
+        font-size: 25px;
+        transform: rotate(1deg);
     }
 
     p {
@@ -55,8 +60,107 @@
     }
 }
 
+.langContainer {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 15% 0 0;
+    transform: rotate(-1deg);
+
+    a {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        text-decoration: none;
+        cursor: pointer;
+        opacity: .6;
+        transition: opacity .5s ease;
+        margin: 5px 0;
+
+        &:hover {
+            opacity: .9;
+            transition: opacity .5s ease; 
+        }
+
+        svg {
+            fill: rgba(255,255,255,.8);
+            width: 20px;
+        }
+    
+        p {
+            font-family: $body;
+            color: rgba(255,255,255,.8);
+            font-size: 14px;
+            margin: 0 0 0 10px;
+            padding: 0;
+        }
+    }
+}
+
+.story {
+    width: 60%;
+    margin: 20px 5% 20px 15%;
+    padding: 5%;
+    background: rgba(0,0,0,.5);
+    transform: rotate(-1deg);
+
+    h2 {
+        font-family: $body;
+        color: rgba(255,255,255,.8);
+        font-size: 22px;
+        line-height: 24px;
+    }
+
+    h5 {
+        font-family: $body;
+        color: rgba(255,255,255,.7);
+        font-size: 18px;
+        line-height: 22px;
+        font-weight: 300;
+
+        b {
+            font-weight: 900;
+        }
+    }
+
+    p {
+        font-family: $body;
+        color: rgba(255,255,255,.8);
+        font-size: 16px;
+        line-height: 25px;
+        font-weight: 400;
+    }
+}
+
 .podcast {
-    width: 40%;
+    width: 80%;
+    margin: 0 10%;
+    position: relative;
+    
+    @media screen and (min-width: 769px) {
+        width: 250px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        margin: 0;
+    }
+
+    p {
+        font-family: $heading;
+        font-size: 20px;
+        margin: 0;
+        padding: 0 4px;
+        color: rgba(255,255,255,.8);
+        display: inline-block;
+        text-align: right;
+    }
 
     img {
         width: 100%;

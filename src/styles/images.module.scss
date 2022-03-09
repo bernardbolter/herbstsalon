@@ -1,0 +1,36 @@
+@import './vars.scss';
+
+.container {
+    width: 90%;
+    margin: 25px 5% 200px;  
+}
+
+.image {
+    width: 90%;
+    margin: 25px 5%;
+    position: relative;
+
+    @media screen and (min-width: 769px) {
+        width: 40%;
+        margin: 15px 2.5%;
+    }
+}
+
+.imageBackground {
+    position: absolute;
+    background: rgba(0,0,0,.3);
+    width: calc(100% + 15px);
+    height: calc(100% + 15px);
+    top: -5px;
+    left: -5px;
+}
+
+.title {
+    position: absolute;
+    padding: 5px 10px;
+    font-family: $body;
+    font-weight: 800;
+    background: rgba(0,0,0,.5);
+    color: rgba(255,255,255,.8);
+    font-size: 12px;
+}

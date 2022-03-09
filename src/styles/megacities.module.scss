@@ -1,0 +1,121 @@
+@import './vars.scss';
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 30px 0 75px;
+}
+
+.megaBackground {
+    position: absolute;
+    width: calc(100% + 30px);
+    height: calc(100% + 10px);
+    top: -5px;
+    left: -15px;
+    background: rgba(0,0,0,.5);
+    transform: rotate(.4deg);
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3px 0 5px;
+    width: 100%;
+
+    h1 {
+        font-family: $body;
+        font-size: 18px;
+        font-weight: 800;
+        color: rgba(255,255,255,.8);
+        margin: 0;
+        padding: 0;
+        position: relative;
+    }
+
+    h2 {
+        font-family: $body;
+        font-size: 15px;
+        font-weight: 500;
+        color: rgba(255,255,255,.7);
+        margin: 0;
+        padding: 0;
+        position: relative;
+    }
+}
+
+.megacity {
+    width: 90%;
+    position: relative;
+
+    @media screen and (min-width: 1100px) {
+        width: 44%;
+    }
+
+    img {
+        width: 100%;
+    }
+}
+
+.cityContainer {
+    width: 100%;
+    margin: 15px 0 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+
+    h1 {
+        font-family: $body;
+        font-size: 16px;
+        font-weight: 300;
+        color: rgba(255,255,255,.8);
+        margin: 0;
+        padding: 0;
+    }
+
+    h2 {
+        font-family: $body;
+        font-size: 10px;
+        font-weight: 800;
+        color: rgba(255,255,255,.6);
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 22px;
+        left: 30px;
+    }
+
+    h3 {
+        font-family: $body;
+        font-size: 14px;
+        font-weight: 800;
+        color: rgba(255,255,255,.8);
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.cityLine {
+    width: 90%;
+    margin: 15px 0 15px 10%;
+    height: 1px;
+    background: rgba(255,255,255,.5);
+}
+
+.total {
+    font-family: $body;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(255,255,255,.8);
+    margin: 10px 0 20px;
+    padding: 0;
+    width: 100%;
+    text-align: right;
+    position: relative;
+}

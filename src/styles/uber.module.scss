@@ -47,34 +47,6 @@
     letter-spacing: 0.05em;
 }
 
-.language {
-    width: 65px;
-    height: 28px;
-    border-radius: 18px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(0,0,0,.5);
-    cursor: pointer;
-
-    p {
-        font-family: $heading;
-        font-size: 20px;
-        margin: 0;
-        padding: 2px 7px 0;
-        color: white;
-    }
-}
-
-.langCircle {
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    fill: rgba(255,255,255,.3);
-    margin-left: 3px;
-}
-
 .red {
    color: $komm;
    background: rgba(255,255,255,.4);

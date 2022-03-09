@@ -4,6 +4,8 @@ import { useStaticQuery, graphql } from 'gatsby'
 import { motion, AnimatePresence } from 'framer-motion'
 import { NavContext } from "../providers/NavProvider"
 
+import Language from './Language'
+
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { BLOCKS, MARKS } from '@contentful/rich-text-types'
 
@@ -83,7 +85,9 @@ const Uber = () => {
             <div className={styles.textWrap}>
               <div className={styles.headerWrap}>
                 <p className={styles.header}>HERBSTSALON! <span className={styles.red}>Komm!</span> Ins Offene</p>
-                <div 
+                <Language />
+                
+                {/* <div 
                   className={styles.language}
                   onClick={() => {
                     console.log("set lang")
@@ -116,7 +120,7 @@ const Uber = () => {
                       opacity: nav.deutsch ? .6 : 1
                     }}
                   >EN</p>
-                </div>
+                </div> */}
               </div>
 
               <AnimatePresence exitBeforeEnter>
