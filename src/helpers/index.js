@@ -35,3 +35,7 @@ export const hexToRGB = (hex, alpha) => {
 export const randomNumber = (min, max) => { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
+
+export const randomNumberPosNeg = num => {
+    return Math.ceil(Math.random() * num) * (Math.round(Math.random()) ? 1 : -1)
+}

@@ -1,21 +1,32 @@
 import React, { useMemo, useContext } from 'react'
 import { MapContext } from '../providers/MapProvider'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import ReactPlayer from 'react-player'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import * as styles from '../styles/tour.module.scss'
 
 const Tour = () => {
     const [map, setMap] = useContext(MapContext)
-    console.log(map.currentTour)
+    console.log(map)
 
     const slide = useMemo(() => {
         console.log("the image: ", map.currentTour.stops[map.currentStop].image.gatsbyImageData)
-        const thisImage = getImage(map.currentTour.stops[map.currentStop].image.gatsbyImageData)
+        var theImage
+        var theVideo
+        if (map.currentTour.slug === 'traces-perceptions-reflections') {
+            theVideo = map.currentTour.stops[map.currentStop].image.file.url
+        } else {
+            theImage = getImage(map.currentTour.stops[map.currentStop].image.gatsbyImageData)
+        }
+        console.log(map.currentTour.stops[map.currentStop].image.file.url)
 
         return (
                 <div className={styles.slide}>
-                    <GatsbyImage image={thisImage} alt="beutiful" />
+                    {map.currentTour.slug === 'traces-perceptions-reflections'
+                        ? <GatsbyImage image={theImage} alt="beutiful" />
+                        : <ReactPlayer url={`https:${map.currentTour.stops[map.currentStop].image.file.url}`} />
+                    }
                 </div>
             )
     }, [map.currentStop])
@@ -76,10 +87,16 @@ const Tour = () => {
                     </div>
                 )}
 
+                {map.currentTour.stops[map.currentStop].description !== null && map.startTour && (
+                    <div className={styles.stopDescription}>
+                        <p>{map.currentTour.stops[map.currentStop].description.description}</p>
+                    </div>
+                )}
+
                 {map.openTour && !map.startTour ? (
                     <div className={styles.startTour}>   
                         <p>{map.currentTour.description}</p>
-                    </div>
+                    </div> 
                 ) : slide }
             </motion.section>
         </AnimatePresence>

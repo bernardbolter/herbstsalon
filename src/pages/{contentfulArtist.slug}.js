@@ -22,7 +22,7 @@ import Megacities from '../components/Megacities'
 import * as styles from '../styles/artist.module.scss'
 
 const Artist = ({ data, location }) => {
-    console.log("artist data: ", data)
+    console.log("artist data: ", location)
     const [artist, setArtist] = useState(data.contentfulArtist)
     const [podcastImage, setPodcastImage] = useState(null)
     console.log("setArtist: ", artist)
@@ -163,6 +163,12 @@ const Artist = ({ data, location }) => {
                     />
                 </motion.div>
             )}
+
+            {/* {artist.flyer !== null && (
+                <div className={styles.flyer}>
+                    <GatsbyImage image={artist.flyer.gatsbyImageData} alt="flyer" />
+                </div>
+            )} */}
 
             {artist.images !== null && <Images images={artist.images} />}
 

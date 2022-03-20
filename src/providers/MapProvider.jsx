@@ -14,7 +14,8 @@ const MapProvider = ({ children }) => {
         startTour: false,
         currentTour: {},
         currentStop: 0,
-        mapNoClick: false
+        mapNoClick: false,
+        karteNavOpen: true
     })
 
     return (

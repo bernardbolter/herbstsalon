@@ -6,7 +6,6 @@
     bottom: 0;
     left: 0;
     width: 400px;
-    height: 300px;
     background: rgba(0,0,0,.8);
 }
 
@@ -84,6 +83,28 @@
         width: 80%;
         margin: 0;
         padding: 10%;
+    }
+}
+
+.slide {
+    display: block;
+
+    img {
+        width: 100%;
+    }
+}
+
+.stopDescription {
+    width: 100%;
+    background: rgba(255,255,255,.7);
+
+    p {
+        font-family: $body;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 16px;
+        padding: 10px 5%;
+        margin: 0;
     }
 }
 

@@ -20,7 +20,7 @@ export const links = {
 
 export const artistsAnime = {
     artistsOff: {
-        translateX: -220,
+        translateX: -320,
         translateY: 44
     },
     artistsOn: {
@@ -36,7 +36,7 @@ export const artistsAnime = {
 
 export const eventsAnime = {
     eventsOff: {
-        translateX: -240,
+        translateX: -340,
         translateY: 140
     },
     eventsOn: {

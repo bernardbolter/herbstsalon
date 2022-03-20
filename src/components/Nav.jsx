@@ -25,18 +25,14 @@ const Nav = ({ location }) => {
     const [hamburger, setHamburger] = useState(false)
 
     useEffect(() => {
-        if (size.window < 769 || location.pathname === '/karte/') {
-            setHamburger(true)
-        } else {
+        if (size.window > 769 || location.pathname === '/') {
+            setNav(state => ({ ...state, navOpen: true }))
             setHamburger(false)
+        } else {
+            setNav(state => ({ ...state, navOpen: false }))
+            setHamburger(true)
         }
     }, [size.window, location])
-
-    useEffect(() => {
-        if (location.pathname === '/karte/') {
-            setNav(state => ({...state, navOpen: false }))
-        }
-    }, [])
 
     return (
         <nav className={styles.container}>

@@ -28,7 +28,7 @@ const TourPage = ({ data, location }) => {
         }
         setMap(state => ({ ...state, currentTour: rawTour, openTour: true }))
 
-    }, [])
+    }, [data.contentfulTour, setMap])
 
     console.log(map.currentTour)
 
@@ -66,6 +66,12 @@ export const query = graphql`
               slug
               image {
                 gatsbyImageData
+                description
+                file {
+                  url
+                }
+              }
+              description {
                 description
               }
             }
