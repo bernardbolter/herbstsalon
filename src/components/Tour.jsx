@@ -12,21 +12,11 @@ const Tour = () => {
 
     const slide = useMemo(() => {
         console.log("the image: ", map.currentTour.stops[map.currentStop].image.gatsbyImageData)
-        var theImage
-        var theVideo
-        if (map.currentTour.slug === 'traces-perceptions-reflections') {
-            theVideo = map.currentTour.stops[map.currentStop].image.file.url
-        } else {
-            theImage = getImage(map.currentTour.stops[map.currentStop].image.gatsbyImageData)
-        }
-        console.log(map.currentTour.stops[map.currentStop].image.file.url)
+        var theImage = getImage(map.currentTour.stops[map.currentStop].image.gatsbyImageData)
 
         return (
                 <div className={styles.slide}>
-                    {map.currentTour.slug === 'traces-perceptions-reflections'
-                        ? <GatsbyImage image={theImage} alt="beutiful" />
-                        : <ReactPlayer url={`https:${map.currentTour.stops[map.currentStop].image.file.url}`} />
-                    }
+                    <GatsbyImage image={theImage} alt="beutiful" />
                 </div>
             )
     }, [map.currentStop])
