@@ -12,18 +12,23 @@
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    flex-wrap: wrap;
     background: rgba(155,155,155,.7);  
 }
 
 .funding {
     position: fixed;
-    bottom: 120px;
+    bottom: 150px;
     left: 0;
     width: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
+
+    @media screen and ( min-width: 600px ) {
+        bottom: 120px;
+    }
 
     p {
         position: relative;
@@ -80,26 +85,50 @@
 }
 
 .dsee {
-    width: 15%;
+    width: 30%;
+
+    @media screen and ( min-width: 600px ) {
+        width: 15%;
+    }
 }
 
 .neustart {
-    width: 5%;
+    width: 15%;
+
+    @media screen and ( min-width: 600px ) {
+        width: 5%;
+    }
 }
 
 .stiftung {
-    width: 15%;
+    width: 30%;
+
+    @media screen and ( min-width: 600px ) {
+        width: 15%;
+    }
 }
 
 .spk {
-    width: 9%;
+    width: 18%;
+
+    @media screen and ( min-width: 600px ) {
+        width: 9%;
+    }
 }
 
 .berlin {
-    width: 13%;
+    width: 26%;
+
+    @media screen and ( min-width: 600px ) {
+        width: 13%;
+    }
 }
 
 .zwitscher {
-    width: 10%;
+    width: 20%;
+
+    @media screen and ( min-width: 600px ) {
+        width: 10%;
+    }
 }
 
