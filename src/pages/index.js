@@ -39,8 +39,8 @@ const IndexPage = ({ location }) => {
       exit="exit"
       className={styles.container}
     >
-      <Uber />
-      <Logo />
+      {/* <Uber /> */}
+      {/* <Logo /> */}
       <Footer />
     </motion.main>
     </>

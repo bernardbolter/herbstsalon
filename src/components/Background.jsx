@@ -1,6 +1,5 @@
 import React from 'react'
-import { StaticImage } from "gatsby-plugin-image"
-
+import { StaticImage } from 'gatsby-plugin-image'
 import { useWindowSize } from '../hooks/useWindowSize'
 
 const Background = () => {
@@ -15,23 +14,58 @@ const Background = () => {
                 margin: 0,
                 padding: 0,
                 top: 0,
-                left: 0
+                left: 0,
             }}
         >
             {size.width > 768
                 ? (
+                    <StaticImage
+                        src="../images/back-logo-lg.png"
+                        alt="transparent logo"
+                        style={{
+                            position: "relative",
+                            zIndex: 2,
+                            height: '100vh'
+                        }}
+                        placholder="tracedSVG"
+                        layout="fullWidth"
+                    />
+                ) : (
+                    <StaticImage
+                        src="../images/back-logo-sm.png"
+                        alt="transparent logo"
+                        style={{
+                            position: "relative",
+                            zIndex: 2,
+                            height: '100vh'
+                        }}
+                        placholder="tracedSVG"
+                        layout="fullWidth"
+                    />
+                )
+            }
+            
+
+            {size.width > 768
+                ? (
                     <StaticImage 
-                        src="../images/desktop_background.jpg" 
+                        src="../images/background.jpg" 
                         alt="destop background with Pallesium" 
-                        style={{ position: 'unset' }}
+                        style={{ 
+                            position: 'unset',
+                            zIndex: 1
+                        }}
                         placeholder="tracedSVG"
                         layout="fullWidth"
                     />
                 ) : (
                     <StaticImage 
-                        src="../images/mobile_background.jpg"
+                        src="../images/background2.jpg"
                         alt="mobile background with Pallesium" 
-                        style={{ position: 'unset' }}
+                        style={{ 
+                            position: 'unset',
+                            zIndex: 1
+                        }}
                         placeholder="tracedSVG"
                         layout="fullWidth"
                     />
