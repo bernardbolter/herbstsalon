@@ -22,21 +22,18 @@ const Nav = ({ location }) => {
     const [artists] = useContext(ArtistContext)
     const variant = nav.navOpen ? "arrow" : "hamburger"
     const size = useWindowSize()
-    const [hamburger, setHamburger] = useState(false)
 
     useEffect(() => {
         if (size.window > 769 || location.pathname === '/') {
-            setNav(state => ({ ...state, navOpen: true }))
-            setHamburger(false)
+            setNav(state => ({ ...state, navOpen: true, hamburger: false }))
         } else {
-            setNav(state => ({ ...state, navOpen: false }))
-            setHamburger(true)
+            setNav(state => ({ ...state, navOpen: false, hamburger: true }))
         }
     }, [size.window, location])
 
     return (
         <nav className={styles.container}>
-            {hamburger && (
+            {nav.hamburger && (
                 <>
                     <motion.div 
                         className={styles.hamburger}
@@ -51,7 +48,7 @@ const Nav = ({ location }) => {
             <motion.div 
                 className={styles.links}
                 style={{
-                    marginTop: hamburger ? 60 : 0
+                    marginTop: nav.hamburger ? 60 : 0
                 }}
                 initial="hamburger"
                 animate={variant}

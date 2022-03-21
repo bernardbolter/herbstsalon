@@ -9,9 +9,9 @@ import { NavContext } from '../providers/NavProvider'
 
 import Nav from '../components/Nav'
 import Uber from '../components/Uber'
-import Logo from '../components/Logo'
 import Footer from '../components/Footer'
 import Background from '../components/Background'
+import Curators from '../components/Curators'
 
 import { useWindowSize } from '../hooks/useWindowSize'
 
@@ -39,9 +39,9 @@ const IndexPage = ({ location }) => {
       exit="exit"
       className={styles.container}
     >
-      {/* <Uber /> */}
-      {/* <Logo /> */}
+      <Uber />
       <Footer />
+      <Curators />
     </motion.main>
     </>
   )

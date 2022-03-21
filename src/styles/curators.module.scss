@@ -1,0 +1,31 @@
+@import './vars.scss';
+
+.container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    h1 {
+        font-family: $body;
+        font-size: 18px;
+        margin: 0;
+        padding: 0;
+    }
+
+    h5 {
+        margin: 0;
+        padding: 0 0 10px;
+        color: rgba(0,0,0,.6);
+        font-family: $body;
+        font-weight: 800;
+        font-size: 14px;
+    }
+
+    img {
+        opacity: .7 !important;
+    }
+}

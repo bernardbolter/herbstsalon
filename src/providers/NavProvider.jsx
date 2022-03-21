@@ -9,6 +9,7 @@ const NavProvider = ({ children }) => {
 
     const [nav, setNav] = useState({
         navOpen: false,
+        hamburger: false,
         logoCenter: true,
         uberOpen: false,
         artistOpen: false,
