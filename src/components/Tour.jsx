@@ -1,7 +1,6 @@
 import React, { useMemo, useContext } from 'react'
 import { MapContext } from '../providers/MapProvider'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import ReactPlayer from 'react-player'
 import { motion, AnimatePresence } from 'framer-motion'
 
 import * as styles from '../styles/tour.module.scss'
@@ -11,14 +10,27 @@ const Tour = () => {
     console.log(map)
 
     const slide = useMemo(() => {
-        console.log("the image: ", map.currentTour.stops[map.currentStop].image.gatsbyImageData)
-        var theImage = getImage(map.currentTour.stops[map.currentStop].image.gatsbyImageData)
+        if (map.currentTour.stops[map.currentStop].image === null) {
+            var theVideo = `../${map.currentTour.stops[map.currentStop].slug}.mp4`
+            console.log(theVideo)
+            return (
+                <video 
+                    controls
+                    style={{ width: "100%" }}
+                    key={map.currentStop}  
+                >
+                    <source src={theVideo} type="video/mp4" />
+                </video>
+            )
+        } else {
+            var theImage = getImage(map.currentTour.stops[map.currentStop].image.gatsbyImageData)
 
         return (
                 <div className={styles.slide}>
                     <GatsbyImage image={theImage} alt="beutiful" />
                 </div>
-            )
+            )   
+        }
     }, [map.currentStop])
 
     return (

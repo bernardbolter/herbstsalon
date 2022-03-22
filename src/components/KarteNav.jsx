@@ -175,23 +175,33 @@ const KarteNav = ({ location }) => {
                     </div>
                     
                     {links.map(link => (
-                        <div className={styles.tourContainer} key = {link.artist}>
+                        <div className={styles.tourContainer} key={link.artist}>
                             <div 
                                 className={styles.tourLink}
                                 onClick={() => {
-                                    console.log("clicked")
-                                    if (location.pathname === `/${link.slug}/`) {
-                                        setMap(state => ({ ...state, openTour: !state.openTour }))
+                                    var newTour = map.allTours.find(tour => {
+                                        return tour.slug === link.slug
+                                    })
+                                    if (map.currentTour.slug === link.slug && map.openTour) {
+                                        setMap(state => ({ ...state, currentTour: newTour, openTour: false, startTour: false }))
                                     } else {
-                                        navigate(`/${link.slug}/`)
+                                        setMap(state => ({ ...state, currentTour: newTour, openTour: true, currentStop: 0}))
                                     }
                                 }}
                             >
                                 <div className={styles.linkStartContainer}>
-                                    <h2>{(location.pathname === `/${link.slug}/` && map.openTour) ? 'Stop' : 'Start'}</h2>
-                                    <svg viewBox="0 0 20 23">
-                                        <path fillRule="evenodd" clipRule="evenodd" d="M20 11.4285C20 12.2137 19.5771 12.9004 18.9467 13.2737L3.25762 22.5445C3.25218 22.5482 3.24638 22.5507 3.24167 22.5543L3.23261 22.5594C2.91374 22.7485 2.54052 22.8572 2.14302 22.8572C0.959914 22.8572 0 21.8981 0 20.7142V2.14302C0 0.959915 0.959914 0 2.14302 0C2.54053 0 2.91375 0.109434 3.23261 0.298588V0.297863L3.24167 0.302573C3.24638 0.306922 3.25218 0.309457 3.25762 0.31308L18.9467 9.58329C19.5775 9.95723 20 10.6436 20 11.4284" />
-                                    </svg>
+                                    <h2>{map.openTour && (map.currentTour.slug === link.slug) ? 'Stop' : 'Start'}</h2>
+                                    {map.openTour && (map.currentTour.slug === link.slug) ? (
+                                        <svg viewBox="0 0 25 25" key="stop">
+                                            <path d="M16.2368 7.6579H8.76316C8.15795 7.6579 7.6579 8.15794 7.6579 8.76316V16.2368C7.6579 16.8421 8.15795 17.3421 8.76316 17.3421H16.2368C16.8421 17.3421 17.3421 16.8421 17.3421 16.2368V8.76316C17.3421 8.15794 16.8421 7.6579 16.2368 7.6579V7.6579Z" />
+                                            <path d="M12.5 0C5.60526 0 0 5.60526 0 12.5C0 19.3947 5.60526 25 12.5 25C19.3947 25 25 19.3947 25 12.5C25 5.60526 19.3947 0 12.5 0ZM12.5 23.0526C6.68421 23.0526 1.94737 18.3158 1.94737 12.5C1.94737 6.68421 6.68421 1.94737 12.5 1.94737C18.3158 1.94737 23.0526 6.68421 23.0526 12.5C23.0526 18.3158 18.3158 23.0526 12.5 23.0526V23.0526Z" />
+                                        </svg>
+                                    ) : (
+                                        <svg viewBox="0 0 20 23" key="start">
+                                            <path fillRule="evenodd" clipRule="evenodd" d="M20 11.4285C20 12.2137 19.5771 12.9004 18.9467 13.2737L3.25762 22.5445C3.25218 22.5482 3.24638 22.5507 3.24167 22.5543L3.23261 22.5594C2.91374 22.7485 2.54052 22.8572 2.14302 22.8572C0.959914 22.8572 0 21.8981 0 20.7142V2.14302C0 0.959915 0.959914 0 2.14302 0C2.54053 0 2.91375 0.109434 3.23261 0.298588V0.297863L3.24167 0.302573C3.24638 0.306922 3.25218 0.309457 3.25762 0.31308L18.9467 9.58329C19.5775 9.95723 20 10.6436 20 11.4284" />
+                                        </svg>
+                                    )}
+                                    
                                 </div>
                                 <div className={styles.linkTextContainer}>
                                     <h3>{link.title}</h3>

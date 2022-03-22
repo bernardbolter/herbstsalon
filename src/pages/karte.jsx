@@ -14,6 +14,7 @@ import * as styles from '../styles/karte.module.scss'
 const Karte = ({ location }) => {
     const [nav] = useContext(NavContext)
     const [map] = useContext(MapContext)
+     console.log(map.openTour)
     
     return (
         <AnimatePresence>

@@ -66,7 +66,6 @@ const MapProvider = ({ children }) => {
             var allTours = []
             tourData.allContentfulTour.edges.map(tour => {
                 var rawLines = []
-                console.log(tour.node)
                 tour.node.line.map(l => {
                     return rawLines.push([l.coords.lon, l.coords.lat])
                 })
@@ -83,8 +82,6 @@ const MapProvider = ({ children }) => {
             setMap(state => ({ ...state, allTours: shuffle(allTours) }))
         }
     }, [tourData])
-
-    console.log(map.allTours)
 
     return (
         <MapContext.Provider

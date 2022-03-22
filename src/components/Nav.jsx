@@ -25,7 +25,7 @@ const Nav = ({ location }) => {
     console.log(nav.hamburger)
 
     useEffect(() => {
-        if (size.width > 769) {
+        if (size.width > 769 && location === '/') {
             setNav(state => ({ ...state, navOpen: true, hamburger: false }))
         } else {
             setNav(state => ({ ...state, navOpen: false, hamburger: true }))

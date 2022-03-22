@@ -246,6 +246,9 @@ export const query = graphql`
                 gatsbyImageData
                 title
               }
+            videoNames {
+                names
+            }
         }
     }
 `
