@@ -4,7 +4,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import * as styles from '../styles/megacities.module.scss'
 
 const Megacities = ({ megacities }) => {
-    console.log("in in: ",megacities)
+
     return (
         <div className={styles.container}>
             {megacities.map((city, i) => {

@@ -1,40 +1,38 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { graphql } from 'gatsby'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { useWindowSize } from '../hooks/useWindowSize'
 
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { BLOCKS, MARKS } from '@contentful/rich-text-types'
 
-import AudioPlayer from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css'
 
 import { NavContext } from '../providers/NavProvider'
-import { hexToRGB } from '../helpers'
+import { hexToRGB, shuffle } from '../helpers'
 
 import Background from '../components/Background'
 import Nav from '../components/Nav'
 import Language from '../components/Language'
 import Images from '../components/Images'
 import Megacities from '../components/Megacities'
+import Videos from '../components/Videos'
+import Podcast from '../components/Podcast'
 
 import * as styles from '../styles/artist.module.scss'
 
 const Artist = ({ data, location }) => {
-    console.log("artist data: ", location)
-    const [artist, setArtist] = useState(data.contentfulArtist)
-    const [podcastImage, setPodcastImage] = useState(null)
-    console.log("setArtist: ", artist)
+    const [artist] = useState(data.contentfulArtist)
+    const [megacities, setMegacities] = useState([])
     const size = useWindowSize()
 
     useEffect(() => {
-        if (artist.podcastImage !== null) {
-            setPodcastImage(getImage(artist.podcastImage.gatsbyImageData))
-        }
-    }, [artist.podcastImage])
+        data.allContentfulMegaimage.edges.map(city => {
+            setMegacities(state => [...state, city.node])
+        })
+    }, [data])
 
-    const [nav, setNav] = useContext(NavContext)
+    const [nav] = useContext(NavContext)
 
     const options = {
         renderMark: {
@@ -76,6 +74,8 @@ const Artist = ({ data, location }) => {
                 <p>{nav.artistPage ? "presents" : "by"}</p>
                 <h2>{nav.artistPage ? artist.title : artist.name}</h2>
             </div>
+
+            {artist.podcast !== null && <Podcast podcast={artist.podcast.file.url} />}
 
             <div className={styles.links}>
                 {artist.website !== null && (
@@ -129,40 +129,18 @@ const Artist = ({ data, location }) => {
                         </motion.div>
                     ) : (
                         <motion.div
-                        key="english"
-                        initial={{opacity: 0}}
-                        animate={{ opacity: 1}}
-                        exit={{ opacity: 0}}
-                        transition={{ duration: .3}}
-                        className={styles.story}
+                            key="english"
+                            initial={{opacity: 0}}
+                            animate={{ opacity: 1}}
+                            exit={{ opacity: 0}}
+                            transition={{ duration: .3}}
+                            className={styles.story}
                     >
                         {renderRichText(artist.englishText, options)}
                     </motion.div> 
                     )
                 }
             </AnimatePresence>
-            
-            {artist.podcastImage !== null && size.width < 769 && (
-                <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 1 }}
-                    className={styles.podcast}
-                >
-                    <p
-                        style={{
-                            background: nav.artistPage ? hexToRGB(nav.colors.kunst, 0.8) : hexToRGB(nav.colors.konzept, 0.8)
-                        }}
-                    >Podcast</p>
-                    <GatsbyImage image={podcastImage} alt="podcast image" />
-                    <AudioPlayer
-                        src={artist.podcast.file.url}
-                        showJumpControls={false}
-                        showFilledProgress={false}
-                    />
-                </motion.div>
-            )}
 
             {/* {artist.flyer !== null && (
                 <div className={styles.flyer}>
@@ -172,30 +150,12 @@ const Artist = ({ data, location }) => {
 
             {artist.images !== null && <Images images={artist.images} />}
 
-            {artist.megaimages !== null && <Megacities megacities={artist.megaimages} />}
+            {artist.megaimages !== null && <Megacities megacities={shuffle(megacities)} />}
+
+            {artist.videoNames !== null && <Videos names={shuffle(artist.videoNames.names)} />}
 
         </motion.main>
-            {artist.podcastImage !== null && size.width > 768 && (
-                <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 1 }}
-                    className={styles.podcast}
-                >
-                    <p
-                        style={{
-                            background: nav.artistPage ? hexToRGB(nav.colors.kunst, 0.8) : hexToRGB(nav.colors.konzept, 0.8)
-                        }}
-                    >Podcast</p>
-                    <GatsbyImage image={podcastImage} alt="podcast image" />
-                    <AudioPlayer
-                        src={artist.podcast.file.url}
-                        showJumpControls={false}
-                        showFilledProgress={false}
-                    />
-                </motion.div>
-            )}
+
         </>
     )
 }
@@ -204,19 +164,7 @@ export const query = graphql`
     query ($slug: String!) {
         contentfulArtist(slug: { eq: $slug }) {
             megaimages {
-                totalPopulation
-                title
-                megacity {
-                  gatsbyImageData
-                    }
-                    city {
-                        artist
-                        englishName
-                        name
-                        population
-                        song
-                        video
-                }
+                id
             }
             location {
                 lat
@@ -248,6 +196,27 @@ export const query = graphql`
               }
             videoNames {
                 names
+            }
+        }
+        allContentfulMegaimage {
+            edges {
+                node {
+                    title
+                    updatedAt
+                    city {
+                    artist
+                    englishName
+                    name
+                    song
+                    population
+                    video
+                    }
+                    totalPopulation
+                    megacity {
+                    gatsbyImageData
+                    title
+                    }
+                }
             }
         }
     }
