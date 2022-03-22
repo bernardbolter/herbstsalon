@@ -1,11 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 
 import { motion } from 'framer-motion'
 import { indexTransitions } from '../animations/pageTransitions'
-
-import { ArtistContext } from '../providers/ArtistProvider'
-import { MapContext } from '../providers/MapProvider'
-import { NavContext } from '../providers/NavProvider'
 
 import Nav from '../components/Nav'
 import Uber from '../components/Uber'
@@ -13,19 +9,10 @@ import Footer from '../components/Footer'
 import Background from '../components/Background'
 import Curators from '../components/Curators'
 
-import { useWindowSize } from '../hooks/useWindowSize'
 
 import * as styles from '../styles/index.module.scss' 
 
-// markup
 const IndexPage = ({ location }) => {
-  const [artist, setArtist] = useContext(ArtistContext)
-  console.log(artist)
-  const [nav, setNav] = useContext(NavContext)
-  console.log(nav)
-  const [map, setMap] = useContext(MapContext)
-
-  // console.log(nav)
 
   return (
     <>

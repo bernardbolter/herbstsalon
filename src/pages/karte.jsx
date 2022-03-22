@@ -7,8 +7,6 @@ import Background from '../components/Background'
 import Map from '../components/Map'
 import KarteNav from '../components/KarteNav'
 import Nav from '../components/Nav'
-
-
 import Tour from '../components/Tour'
 
 import * as styles from '../styles/karte.module.scss'
@@ -24,6 +22,7 @@ const Karte = ({ location }) => {
                 <Nav location={location} />
                 <KarteNav location={location} />
                 <Map />
+                {map.openTour && <Tour />}
             </motion.div>
         </AnimatePresence>
     )

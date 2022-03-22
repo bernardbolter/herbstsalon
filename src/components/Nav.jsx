@@ -22,14 +22,15 @@ const Nav = ({ location }) => {
     const [artists] = useContext(ArtistContext)
     const variant = nav.navOpen ? "arrow" : "hamburger"
     const size = useWindowSize()
+    console.log(nav.hamburger)
 
     useEffect(() => {
-        if (size.window > 769 || location.pathname === '/') {
+        if (size.width > 769) {
             setNav(state => ({ ...state, navOpen: true, hamburger: false }))
         } else {
             setNav(state => ({ ...state, navOpen: false, hamburger: true }))
         }
-    }, [size.window, location])
+    }, [size.width, location])
 
     return (
         <nav className={styles.container}>
@@ -64,7 +65,7 @@ const Nav = ({ location }) => {
                             artistOpen: state.artistOpen ? false : null,
                             eventsOpen: state.eventsOpen ? false : null
                         }))
-                        if (location.pathname === "/karte/") {
+                        if (location.pathname !== "/") {
                             navigate("/")
                         }
                     }}    

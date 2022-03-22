@@ -43,10 +43,8 @@ const Uber = () => {
       }
     }, [size.width])
 
-    console.log("con width: ", containerWidth)
 
     const [nav, setNav] = useContext(NavContext)
-    console.log(nav)
 
     const options = {
       renderMark: {
@@ -86,41 +84,6 @@ const Uber = () => {
               <div className={styles.headerWrap}>
                 <p className={styles.header}>HERBSTSALON! <span className={styles.red}>Komm!</span> Ins Offene</p>
                 <Language />
-                
-                {/* <div 
-                  className={styles.language}
-                  onClick={() => {
-                    console.log("set lang")
-                    setNav(state => ({ ...state, deutsch: !state.deutsch }))
-                  }}   
-                >
-                  <motion.svg   
-                    viewBox="0 0 25 25"
-                    className={styles.langCircle}
-                    initial={{
-                      translateX: 0
-                    }}
-                    animate={{
-                      translateX: nav.deutsch ? 0 : 34
-                    }}
-                    transition={{
-                      duration: .3,
-                      ease: "linear"
-                    }}
-                  >
-                    <circle cx="12" cy="12" r="12"/>
-                  </motion.svg>
-                  <p
-                    style={{
-                      opacity: nav.deutsch ? 1 : .6
-                    }}
-                  >DE</p>
-                  <p
-                    style={{
-                      opacity: nav.deutsch ? .6 : 1
-                    }}
-                  >EN</p>
-                </div> */}
               </div>
 
               <AnimatePresence exitBeforeEnter>

@@ -47,7 +47,7 @@ const NavProvider = ({ children }) => {
         if (size.width > 768) {
             containerWidth = size.width * .8
         } else {
-            containerWidth = size.containerWidth
+            containerWidth = size.width
         }
         if (containerWidth !== undefined) {
             setNav(state => ({

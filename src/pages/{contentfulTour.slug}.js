@@ -67,9 +67,6 @@ export const query = graphql`
               image {
                 gatsbyImageData
                 description
-                file {
-                  url
-                }
               }
               description {
                 description
