@@ -28,8 +28,8 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
-    margin:  0 0 0 5%;
+    align-items: flex-end;
+    margin:  0 10% 0 0;
     width: 100%;
 
     h1 {
@@ -62,6 +62,11 @@
     }
 }
 
+.youtube {
+    width: 80%;
+    margin: 3% 10%;
+}
+
 .langContainer {
     position: absolute;
     top: 30px;
@@ -77,9 +82,10 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
-    margin: 00;
+    align-items: flex-end;
+    margin: 10px 0;
     transform: rotate(-1deg);
+    width: 100%;
 
     a {
         display: flex;
@@ -126,6 +132,18 @@
     }
 
     h5 {
+        font-family: $body;
+        color: rgba(255,255,255,.7);
+        font-size: 18px;
+        line-height: 22px;
+        font-weight: 300;
+
+        b {
+            font-weight: 900;
+        }
+    }
+
+    h6 {
         font-family: $body;
         color: rgba(255,255,255,.7);
         font-size: 18px;

@@ -8,7 +8,6 @@ const Images = ({ images }) => {
     return (
         <div className={styles.container} >
             {images.map((img, i) => {
-              console.log(img)
               return (
                 <div
                     key={i}

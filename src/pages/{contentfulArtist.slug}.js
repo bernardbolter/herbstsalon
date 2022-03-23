@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { graphql } from 'gatsby'
 import { useWindowSize } from '../hooks/useWindowSize'
+import ReactPlayer from 'react-player'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import { BLOCKS, MARKS } from '@contentful/rich-text-types'
@@ -44,6 +46,8 @@ const Artist = ({ data, location }) => {
         }
       }
 
+    console.log(artist)
+    
     return (
         <>
         <Nav location={location} />
@@ -80,7 +84,7 @@ const Artist = ({ data, location }) => {
             <div className={styles.links}>
                 {artist.website !== null && (
                     <a 
-                        href={`https://${artist.website}`} 
+                        href={`http://${artist.website}`} 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className={styles.website}
@@ -109,6 +113,15 @@ const Artist = ({ data, location }) => {
                 )}
             </div>
         </div>
+
+            {artist.youtube !== null && (
+                <div className={styles.youtube}>
+                    <ReactPlayer 
+                        url={artist.youtube} 
+                        width="100%"
+                    />
+                </div>
+            )}
 
             <div className={styles.langContainer}>
                 <Language /> 
@@ -142,11 +155,11 @@ const Artist = ({ data, location }) => {
                 }
             </AnimatePresence>
 
-            {/* {artist.flyer !== null && (
+            {artist.flyer !== null && (
                 <div className={styles.flyer}>
                     <GatsbyImage image={artist.flyer.gatsbyImageData} alt="flyer" />
                 </div>
-            )} */}
+            )}
 
             {artist.images !== null && <Images images={artist.images} />}
 
@@ -165,6 +178,10 @@ export const query = graphql`
         contentfulArtist(slug: { eq: $slug }) {
             megaimages {
                 id
+            }
+            youtube
+            flyer {
+                gatsbyImageData
             }
             location {
                 lat
